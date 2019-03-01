@@ -1,0 +1,12 @@
+{
+  "app": {
+    "port": 8080
+  },
+  "logger": {},
+  "postgres": {
+    "database": "test",
+    "host": "localhost",
+    "port": 5432
+  },
+  "services": {}
+}

@@ -1,0 +1,13 @@
+version: '2.1'
+services:
+  app:
+    entrypoint: 'npm test'
+    ports:
+      - "8080:80"
+    environment:
+      - PORT=8080
+      - NODE_ENV=test
+      - POSTGRES_HOSTNAME=postgres
+  postgres:
+    environment:
+      - POSTGRES_DB=test

@@ -1,0 +1,56 @@
+{
+  "name": "koa-template",
+  "version": "1.0.0",
+  "description": "koa-template API",
+  "main": "index.js",
+  "nyc": {
+    "exclude": [
+      "**/*.test.js",
+      "lib/middlewares",
+      "lib/db/pool.js"
+    ]
+  },
+  "scripts": {
+    "lint": "eslint ./lib ./tests",
+    "start": "node index.js",
+    "dev": "NODE_ENV=dev nodemon index.js",
+    "windev": "set NODE_ENV=dev && nodemon index.js",
+    "test": "NODE_ENV=test nyc --reporter=html --reporter=text-summary mocha ./tests/index.js --reporter=dot",
+    "watch": "watch 'npm test' lib config tests --wait 5",
+    "docker-dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build --force-recreate --abort-on-container-exit",
+    "docker-test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build --force-recreate --abort-on-container-exit",
+    "doc": "apidoc -i lib/ -o apidoc -e apidoc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SachaCR/koa-template.git"
+  },
+  "keywords": [],
+  "author": "SachaCR",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SachaCR/koa-template/issues"
+  },
+  "homepage": "https://github.com/SachaCR/koa-template#readme",
+  "dependencies": {
+    "ajv": "^6.9.2",
+    "apidoc": "^0.17.7",
+    "chalk": "^2.4.2",
+    "config": "^3.0.1",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compress": "^3.0.0",
+    "koa-router": "^7.4.0",
+    "pg": "^7.8.1",
+    "verror": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
+    "nyc": "^11.2.1",
+    "superagent": "^3.7.0",
+    "watch": "^1.0.2"
+  }
+}

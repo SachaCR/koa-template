@@ -2,6 +2,11 @@ version: '2.1'
 
 services:
   app:
+    container_name: todos-api
+    volumes:
+      - "./lib:/src/lib"
+      - "./tests:/src/tests"
+      - "./config:/src/config"
     build:
       context: .
       args:
@@ -21,7 +26,7 @@ services:
     container_name: postgres-koa-template
     restart: always
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U local -d local"]
       interval: 1s
       timeout: 30s
       retries: 50
@@ -31,3 +36,4 @@ services:
       - POSTGRES_DB=local
       - POSTGRES_USER=local
       - POSTGRES_PASSWORD=local
+      - POSTGRES_HOSTNAME=postgres

@@ -16,9 +16,8 @@
 ## Tests
 
 - run : `$ npm install`
-- run test on docker : `npm run docker-test`
+- run test on docker : `npm run docker-test` This will run the tests and relaunch the tests if files are changing.
 - run test locally : `$ npm test` You will need to have a postgresSQL on localhost. You can use the docker created by the `npm run docker-test` command.
-- run : `$ npm run watch` : It launch test when you change the code
 
 ## Run API Locally :
 

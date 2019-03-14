@@ -1,8 +1,8 @@
 const config = require('config')
 const test = require('ava')
-const app = require('../../app')
+const app = require('../../lib/app')
 const logger = require('../mocks/logger')
-const dbClient = require('../../db')(logger)
+const dbClient = require('../../lib/db')(logger)
 const bootstrapDB = require('../bootstrapDB')
 const request = require('superagent')
 

@@ -2,7 +2,8 @@
   "app": {},
   "logger": {},
   "postgres": {
-    "database": "test"
+    "database": "test",
+    "host": "localhost"
   },
   "services": {}
 }

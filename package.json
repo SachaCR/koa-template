@@ -13,11 +13,8 @@
   "scripts": {
     "lint": "eslint ./lib ./tests",
     "start": "node index.js",
-    "dev": "NODE_ENV=dev nodemon index.js",
-    "windev": "set NODE_ENV=dev && nodemon index.js",
-    "test": "NODE_ENV=test nyc --reporter=html --reporter=text-summary mocha ./tests/index.js --reporter=dot",
-    "watch": "watch 'npm test' lib config tests --wait 5",
-    "docker-dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build --force-recreate --abort-on-container-exit",
+    "test": "NODE_ENV=localtest nyc --reporter=html --reporter=text-summary ava --serial",
+    "watch": "nyc --reporter=html --reporter=text-summary ava --watch --serial",
     "docker-test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build --force-recreate --abort-on-container-exit",
     "doc": "apidoc -i lib/ -o apidoc -e apidoc"
   },
@@ -33,24 +30,24 @@
   },
   "homepage": "https://github.com/SachaCR/koa-template#readme",
   "dependencies": {
-    "ajv": "^6.9.2",
-    "apidoc": "^0.17.7",
     "chalk": "^2.4.2",
     "config": "^3.0.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-compress": "^3.0.0",
+    "koa-depsi": "^1.0.0",
     "koa-router": "^7.4.0",
+    "koa-validator-ajv": "^1.0.0",
     "pg": "^7.8.1",
+    "superagent": "^4.1.0",
     "verror": "^1.10.0"
   },
   "devDependencies": {
+    "apidoc": "^0.17.7",
+    "ava": "^1.3.1",
     "eslint": "^4.9.0",
-    "eslint-plugin-mocha": "^4.11.0",
-    "mocha": "^4.0.1",
     "nodemon": "^1.12.1",
-    "nyc": "^11.2.1",
-    "superagent": "^3.7.0",
+    "nyc": "^13.3.0",
     "watch": "^1.0.2"
   }
 }

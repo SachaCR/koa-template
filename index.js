@@ -12,7 +12,11 @@ const logger = winston.createLogger({
 
 const app = require('./lib/app')
 
-//const dbClient = require('./lib/db')(logger)
-const dbClient = { query: async () => {} }
-app({ dbClient, logger }).listen(config.app.port || 80)
+const dbClient = require('./lib/db')(logger)
 
+const dependencies = {
+  dbClient,
+  logger
+}
+
+app(dependencies).listen(config.app.port || 80)

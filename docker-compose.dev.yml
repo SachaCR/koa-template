@@ -6,5 +6,5 @@ services:
       - "80:80"
     environment:
       - PORT=80
-      - NODE_ENV=dev
+      - NODE_ENV=docker-dev
 

@@ -6,4 +6,4 @@ services:
       - "80:80"
     environment:
       - PORT=80
-      - NODE_ENV=test
+      - NODE_ENV=docker-test

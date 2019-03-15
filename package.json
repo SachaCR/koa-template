@@ -7,11 +7,15 @@
     "exclude": [ "**/*.test.js", "lib/middlewares", "lib/db/pool.js" ],
     "reporter": [ "html", "text-summary" ]
   },
+  "mocha": {
+    "recursive": true,
+    "reporter": "spec"
+  },
   "scripts": {
     "lint": "eslint ./lib ./tests ./config",
     "start": "node index.js",
     "start:docker": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build --force-recreate --abort-on-container-exit",
-    "test": "nyc mocha --recursive --reporter=spec './tests/**/*.test.js'",
+    "test": "nyc mocha './tests/**/*.test.js'",
     "test:local": "NODE_ENV=localtest npm run test",
     "test:docker": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build --force-recreate --abort-on-container-exit",
     "test:watch": "watch 'npm run test' lib config tests --wait 5",

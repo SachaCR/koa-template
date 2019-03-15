@@ -15,10 +15,9 @@
     "lint": "eslint ./lib ./tests ./config",
     "start": "node index.js",
     "start:docker": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build --force-recreate --abort-on-container-exit",
-    "test": "nyc mocha './tests/**/*.test.js'",
-    "test:local": "NODE_ENV=localtest npm run test",
+    "test": "NODE_ENV=test nyc mocha './tests/**/*.test.js'",
     "test:docker": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build --force-recreate --abort-on-container-exit",
-    "test:watch": "watch 'npm run test' lib config tests --wait 5",
+    "test:watch": "watch 'nyc mocha './tests/**/*.test.js'' lib config tests --wait 5",
     "doc": "apidoc -i lib/ -o apidoc -e apidoc"
   },
   "repository": {

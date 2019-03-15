@@ -24,7 +24,7 @@ describe('POST /todos', async () => {
       id: 1,
       priority: 0,
       title: 'Learn Javascript',
-    }, 'Response body should be to todo data')
+    }, 'Response body should be equal to todo data')
     assert.deepEqual(response.status, 201, 'Status code should be 201')
 
     const todos = await dbClient.query('SELECT done, id, todo_priority AS priority, title FROM todos').then(res => res.rows)
@@ -61,7 +61,7 @@ describe('POST /todos', async () => {
       id: 1,
       priority: 3,
       title: 'Learn Javascript',
-    }, 'Response body should be to todo data')
+    }, 'Response body should be equal to todo data')
     assert.deepEqual(response.status, 201, 'Status code should be 201')
 
     const todos = await dbClient.query('SELECT done, id, todo_priority AS priority, title FROM todos').then(res => res.rows)

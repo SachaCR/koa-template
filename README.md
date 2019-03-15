@@ -21,7 +21,7 @@
 
 ## Run API Locally :
 
-- run API server locally with docker : `npm run docker-dev`
+- run API server locally with docker : `npm run start:docker`
 
 ## Code Coverage
 

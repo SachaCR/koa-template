@@ -4,18 +4,17 @@
   "description": "koa-template API",
   "main": "index.js",
   "nyc": {
-    "exclude": [
-      "**/*.test.js",
-      "lib/middlewares",
-      "lib/db/pool.js"
-    ]
+    "exclude": [ "**/*.test.js", "lib/middlewares", "lib/db/pool.js" ],
+    "reporter": [ "html", "text-summary" ]
   },
   "scripts": {
-    "lint": "eslint ./lib ./tests",
+    "lint": "eslint ./lib ./tests ./config",
     "start": "node index.js",
-    "test": "NODE_ENV=localtest nyc --reporter=html --reporter=text-summary ava --serial",
-    "watch": "nyc --reporter=html --reporter=text-summary ava --watch --serial",
-    "docker-test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build --force-recreate --abort-on-container-exit",
+    "start:docker": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build --force-recreate --abort-on-container-exit",
+    "test": "nyc mocha --recursive --reporter=spec './tests/**/*.test.js'",
+    "test:local": "NODE_ENV=localtest npm run test",
+    "test:docker": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build --force-recreate --abort-on-container-exit",
+    "test:watch": "watch 'npm run test' lib config tests --wait 5",
     "doc": "apidoc -i lib/ -o apidoc -e apidoc"
   },
   "repository": {
@@ -44,9 +43,8 @@
   },
   "devDependencies": {
     "apidoc": "^0.17.7",
-    "ava": "^1.3.1",
     "eslint": "^4.9.0",
-    "nodemon": "^1.12.1",
+    "mocha": "^6.0.2",
     "nyc": "^13.3.0",
     "watch": "^1.0.2"
   }

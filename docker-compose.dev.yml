@@ -1,9 +1,10 @@
 version: '2.1'
 services:
   app:
-    entrypoint: 'npm run test:watch'
+    entrypoint: 'node index.js'
     ports:
       - "80:80"
     environment:
       - PORT=80
-      - NODE_ENV=test
+      - NODE_ENV=dev
+

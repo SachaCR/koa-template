@@ -19,4 +19,9 @@ const dependencies = {
   logger
 }
 
-app(dependencies).listen(config.app.port || 80)
+const server = app(dependencies).listen(config.app.port || 80)
+
+server.on('close', () => {
+  logger.info('SERVER SHUTDOWN')
+  dbClient.close()
+})

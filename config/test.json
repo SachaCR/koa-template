@@ -1,8 +1,6 @@
 {
   "app": {},
   "logger": {},
-  "postgres": {
-    "database": "test"
-  },
+  "postgres": {},
   "services": {}
 }

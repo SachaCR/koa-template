@@ -4,20 +4,22 @@
   "description": "koa-template API",
   "main": "index.js",
   "nyc": {
-    "exclude": [ "**/*.test.js", "lib/middlewares", "lib/db/pool.js" ],
+    "exclude": [ "tests", "lib/middlewares", "lib/db/index.js" ],
     "reporter": [ "html", "text-summary" ]
   },
   "mocha": {
     "recursive": true,
-    "reporter": "spec"
+    "reporter": "spec",
+    "spec": "./tests/**/*.test.js"
   },
   "scripts": {
     "lint": "eslint ./lib ./tests ./config",
     "start": "node index.js",
     "start:docker": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build --force-recreate --abort-on-container-exit",
-    "test": "NODE_ENV=test nyc mocha './tests/**/*.test.js'",
+    "test": "NODE_ENV=test nyc mocha",
+    "test:watch": "NODE_ENV=test watch 'npm test' lib config tests --wait 5",
     "test:docker": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build --force-recreate --abort-on-container-exit",
-    "test:watch": "watch 'nyc mocha './tests/**/*.test.js'' lib config tests --wait 5",
+    "test:docker:watch": "watch 'nyc mocha' lib config tests --wait 5",
     "doc": "apidoc -i lib/ -o apidoc -e apidoc"
   },
   "repository": {

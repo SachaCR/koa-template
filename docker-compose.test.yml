@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   app:
-    entrypoint: 'npm run test:watch'
+    entrypoint: 'npm run test:docker:watch'
     ports:
       - "80:80"
     environment:

@@ -4,8 +4,15 @@
   "description": "koa-template API",
   "main": "index.js",
   "nyc": {
-    "exclude": [ "tests", "lib/middlewares", "lib/db/index.js" ],
-    "reporter": [ "html", "text-summary" ]
+    "exclude": [
+      "tests",
+      "lib/middlewares",
+      "lib/db/index.js"
+    ],
+    "reporter": [
+      "html",
+      "text-summary"
+    ]
   },
   "mocha": {
     "recursive": true,
@@ -50,6 +57,7 @@
     "apidoc": "^0.17.7",
     "eslint": "^4.9.0",
     "mocha": "^6.0.2",
+    "nock": "^10.0.6",
     "nyc": "^13.3.0",
     "watch": "^1.0.2"
   }

@@ -19,18 +19,18 @@ describe('POST /todos', async () => {
 
     server.close()
 
-    assert.deepEqual(response.body.data, {
+    assert.deepStrictEqual(response.body.data, {
       done: false,
       id: 1,
       priority: 0,
       title: 'Learn Javascript',
     }, 'Response body should be equal to todo data')
-    assert.deepEqual(response.status, 201, 'Status code should be 201')
+    assert.deepStrictEqual(response.status, 201, 'Status code should be 201')
 
     const todos = await dbClient.query('SELECT done, id, todo_priority AS priority, title FROM todos').then(res => res.rows)
 
-    assert.deepEqual(todos.length, 1, 'The number of todos in DB should be 1')
-    assert.deepEqual(todos[0], {
+    assert.deepStrictEqual(todos.length, 1, 'The number of todos in DB should be 1')
+    assert.deepStrictEqual(todos[0], {
       done: false,
       id: 1,
       priority: 0,
@@ -56,18 +56,18 @@ describe('POST /todos', async () => {
 
     server.close()
 
-    assert.deepEqual(response.body.data, {
+    assert.deepStrictEqual(response.body.data, {
       done: true,
       id: 1,
       priority: 3,
       title: 'Learn Javascript',
     }, 'Response body should be equal to todo data')
-    assert.deepEqual(response.status, 201, 'Status code should be 201')
+    assert.deepStrictEqual(response.status, 201, 'Status code should be 201')
 
     const todos = await dbClient.query('SELECT done, id, todo_priority AS priority, title FROM todos').then(res => res.rows)
 
-    assert.deepEqual(todos.length, 1, 'The number of todos in DB should be 1')
-    assert.deepEqual(todos[0], {
+    assert.deepStrictEqual(todos.length, 1, 'The number of todos in DB should be 1')
+    assert.deepStrictEqual(todos[0], {
       done: true,
       id: 1,
       priority: 3,
@@ -93,7 +93,7 @@ describe('POST /todos', async () => {
     server.close()
     await dbClient.close()
 
-    assert.deepEqual(response.body, {
+    assert.deepStrictEqual(response.body, {
       error: 'AJV_INVALID_PAYLOAD',
       info: {
         errors: [
@@ -110,11 +110,11 @@ describe('POST /todos', async () => {
       },
       message: 'AJV detect an invalid payload',
     }, 'Response body should be an error with the details')
-    assert.deepEqual(response.status, 400, 'Status code should be 400')
+    assert.deepStrictEqual(response.status, 400, 'Status code should be 400')
 
   })
 
-  it('Should return an error of database failure', async () => {
+  it('Should return an error on database failure', async () => {
     const dbClient = require('../../lib/db')(logger)
     await bootstrapDB()
     const server = app({
@@ -133,7 +133,7 @@ describe('POST /todos', async () => {
     server.close()
     await dbClient.close()
 
-    assert.deepEqual(response.body, {
+    assert.deepStrictEqual(response.body, {
       error: 'CREATE_TODO_ERROR',
       info: {
         done: false,
@@ -142,7 +142,7 @@ describe('POST /todos', async () => {
       },
       message: 'Something went wrong while inserting new todo: Database is down',
     }, 'Response body should be an error with error messages concatenated by verror module')
-    assert.deepEqual(response.status, 500, 'Status code should be 500')
+    assert.deepStrictEqual(response.status, 500, 'Status code should be 500')
   })
 
 })

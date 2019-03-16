@@ -21,8 +21,8 @@ describe('Server behaviors', async () => {
     server.close()
     await dbClient.close()
 
-    assert.deepEqual(response.text, 'Not Found', 'Response text should be "Not Found"')
-    assert.deepEqual(response.status, 404, 'Status code should be 404')
+    assert.deepStrictEqual(response.text, 'Not Found', 'Response text should be "Not Found"')
+    assert.deepStrictEqual(response.status, 404, 'Status code should be 404')
   })
 
 })

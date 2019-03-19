@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   app:
-    container_name: todos-api
+    container_name: koa-template
     volumes:
       - "./lib:/src/lib"
       - "./tests:/src/tests"

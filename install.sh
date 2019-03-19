@@ -14,4 +14,10 @@ rm install.sh
 rm README.md
 mv PROJECT_README.md README.md
 
+echo Git initial commit
+
+git init
+git add -A
+git commit -m 'Initial commit'
+
 echo $1 project created!

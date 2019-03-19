@@ -7,14 +7,14 @@
 
 ## Generate API Documentation :
 
-- run : `$ npm run doc`
+- run : `npm run doc`
 - open `./apidoc/index.html` to read the documentation
 
 ## Run tests :
 
-- run : `$ npm install`
+- run : `npm install`
 - run test in docker containers : `npm run test:docker` This will run the tests and relaunch the tests if files are changing.
-- run test locally : `$ npm test` You will need to have a postgresSQL on localhost. You can use the docker created by the `npm run test:docker` command.
+- run test locally : `npm test` You will need to have a postgresSQL on localhost. You can use the docker created by the `npm run test:docker` command.
 
 ## Run API Locally :
 
@@ -22,4 +22,4 @@
 
 ## Code Coverage :
 
-After running `$ npm test` you can access the code coverage report here : `./coverage/index.html`
+After running `npm test` you can access the code coverage report here : `./coverage/index.html`

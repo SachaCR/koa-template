@@ -12,7 +12,18 @@ You can use it for your own project if it suits your needs.
 
 Don't hesitate to let me know if you appreciate it and to share it around you.
 
-To see how i use it you can look some codes sample from the repository : `koa-template-samples`
+This template has the following features : 
+
+- Testing workflow with code coverage by using `mocha` and `nyc`
+- Docker configuration for running tests with live reload on code changes
+- Dependencies injections for easy unit and integrations tests.
+- Payload validation by using `koa-validator-ajv`
+- Logging using `winston`
+- API documentation using `apidoc`
+
+I use postgresSQL for the database but you can easily remove/replace postgres by what you want.
+
+To see how i use this template you can look some codes sample from the repository : [koa-template-samples](https://github.com/SachaCR/koa-template-samples).
 
 ## Create a project :
 

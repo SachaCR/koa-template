@@ -24,9 +24,9 @@
     "start": "node index.js",
     "start:docker": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build --force-recreate --abort-on-container-exit",
     "test": "NODE_ENV=test nyc mocha",
-    "test:watch": "NODE_ENV=test watch 'mocha' lib config tests --wait 5",
+    "test:watch": "NODE_ENV=test chokidar \"./lib\" \"./tests\" \"config\" -c \"nyc mocha\" --initial true",
     "test:docker": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build --force-recreate --abort-on-container-exit",
-    "test:docker:watch": "watch 'nyc mocha' lib config tests --wait 5",
+    "test:docker:watch": "chokidar \"./lib\" \"./tests\" \"config\" -c \"nyc mocha\" --initial true --silent true",
     "doc": "apidoc -i lib/ -o apidoc -e apidoc"
   },
   "repository": {
@@ -55,10 +55,10 @@
   },
   "devDependencies": {
     "apidoc": "^0.17.7",
+    "chokidar-cli": "^1.2.2",
     "eslint": "^4.9.0",
     "mocha": "^6.0.2",
     "nock": "^10.0.6",
-    "nyc": "^13.3.0",
-    "watch": "^1.0.2"
+    "nyc": "^13.3.0"
   }
 }

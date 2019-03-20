@@ -13,6 +13,7 @@ services:
         - NPM_TOKEN
     environment:
       - NPM_TOKEN
+      - SHELL=/bin/bash
     links:
       - postgres
     depends_on:
